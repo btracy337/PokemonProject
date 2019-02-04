@@ -16,6 +16,7 @@ public abstract class Pokemon
 		this.name = name;
 		this.number = number;
 	}
+
 	
 	public String[] getPokemonTypes()
 	{
