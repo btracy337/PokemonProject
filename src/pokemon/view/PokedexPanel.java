@@ -1,6 +1,6 @@
 package pokemon.view;
 
-public class PokemonPanel
+public class PokedexPanel
 {
 
 }
