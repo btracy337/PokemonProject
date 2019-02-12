@@ -6,13 +6,13 @@ import javax.swing.*;
 public class PokedexFrame extends JFrame
 {
 	private PokedexController app;
-	private PokedexPanel panel;
+	private PokedexPanel PokedexPanel;
 
 	public PokedexFrame(PokedexController app)
 	{
 		super();
 		this.app = app;
-		this.panel = new PokedexPanel();
+		this.PokedexPanel = new PokedexPanel(app);
 
 		setupFrame();
 	}
@@ -21,7 +21,7 @@ public class PokedexFrame extends JFrame
 	{
 		this.setContentPane(PokedexPanel);
 		this.setSize(800, 800);
-		this.setTitle("");
+		this.setTitle("Pokemon Inheritance");
 		this.setResizable(false);
 		this.setVisible(true);
 	}
