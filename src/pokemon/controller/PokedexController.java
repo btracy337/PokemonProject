@@ -1,12 +1,13 @@
 package pokemon.controller;
 
 import java.util.ArrayList;
-
+import pokemon.view.PokedexFrame;
 import pokemon.model.Pokemon;
 
 public class PokedexController
 {
-	public ArrayList<Pokemon> pokemonList;
+	private ArrayList<Pokemon> pokemonList;
+	private PokedexFrame frame;
 	public void start()
 	{
 		this.pokemonList = new ArrayList<Pokemon>();
@@ -15,6 +16,10 @@ public class PokedexController
 	public PokedexController()
 	{
 
+	}
+	public PokedexFrame getFrame()
+	{
+		return this.frame;
 	}
 
 
