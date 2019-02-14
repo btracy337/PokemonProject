@@ -24,7 +24,6 @@ class TestPokedexController
 	{
 		tested = null;
 	}
-
 	@Test
 	void testPokemonInPokedex()
 	{

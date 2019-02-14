@@ -15,7 +15,8 @@ public class PokedexController
 
 	public PokedexController()
 	{
-
+		this.pokemonList = new ArrayList<Pokemon>(5);
+		this.frame = new PokedexFrame(this);
 	}
 	public PokedexFrame getFrame()
 	{
