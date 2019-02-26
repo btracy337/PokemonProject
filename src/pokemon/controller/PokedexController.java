@@ -1,6 +1,11 @@
 package pokemon.controller;
 
 import java.util.ArrayList;
+import pokemon.model.Blastoise;
+import pokemon.model.Charizard;
+import pokemon.model.Charmander;
+import pokemon.model.IgglyBuff;
+import pokemon.model.Squirtle;
 import pokemon.view.PokedexFrame;
 import pokemon.model.Pokemon;
 
@@ -8,14 +13,33 @@ public class PokedexController
 {
 	private ArrayList<Pokemon> pokemonList;
 	private PokedexFrame frame;
+	private Blastoise Blastoise;
+	private Charizard Charizard;
+	private Charmander Charmander;
+	private IgglyBuff IgglyBuff;
+	private Squirtle Squirtle;
 	public void start()
 	{
-		this.pokemonList = new ArrayList<Pokemon>();
+	
 	}
-
+	public void buildPokemonList()
+	{
+		this.Blastoise = new Blastoise(9, "Blastoise");
+		this.Charizard = new Charizard(25, "Charizard");
+		this.Charmander = new Charmander(10, "Charmander");
+		this.IgglyBuff = new IgglyBuff(5, "IgglyBuff");
+		this.Squirtle = new Squirtle(10, "Squirtle");
+		pokemonList.add(Blastoise);
+		pokemonList.add(Charizard);
+		pokemonList.add(Charmander);
+		pokemonList.add(IgglyBuff);
+		pokemonList.add(Squirtle);
+	}
 	public PokedexController()
 	{
+		
 		this.pokemonList = new ArrayList<Pokemon>(5);
+		buildPokemonList();
 		this.frame = new PokedexFrame(this);
 	}
 	public PokedexFrame getFrame()
