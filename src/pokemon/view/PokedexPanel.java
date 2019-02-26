@@ -13,6 +13,7 @@ public class PokedexPanel extends JPanel
 	private PokedexController app;
 	private SpringLayout appLayout;
 	private JButton changeButton;
+	private JButton saveButton;
 	private JComboBox<String> pokedexDropdown;
 	private JTextField healthPointsText;
 	private JTextField attackPointsText;
@@ -59,6 +60,8 @@ public class PokedexPanel extends JPanel
 		
 		imageLabel = new JLabel("pokemon goes here", pokemonIcon, JLabel.CENTER);
 		changeButton = new JButton("Click here to change the pokevalues");
+		saveButton = new JButton("Save");
+
 		
 		pokedexDropdown = new JComboBox<String>();
 		
@@ -84,6 +87,7 @@ public class PokedexPanel extends JPanel
 		this.add(nameLabel);
 		this.add(canEvolveLabel);
 		this.add(changeButton);
+		this.add(saveButton);
 		this.add(imageLabel);
 		this.add(pokedexDropdown);
 		this.setLayout(appLayout);
@@ -124,6 +128,8 @@ public class PokedexPanel extends JPanel
 		appLayout.putConstraint(SpringLayout.WEST, pokedexDropdown, 23, SpringLayout.WEST, this);
 		appLayout.putConstraint(SpringLayout.NORTH, changeButton, 17, SpringLayout.SOUTH, pokedexDropdown);
 		appLayout.putConstraint(SpringLayout.NORTH, pokedexDropdown, 1, SpringLayout.NORTH, healthPointsText);
+		appLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, numberText);
+		appLayout.putConstraint(SpringLayout.WEST, saveButton, 48, SpringLayout.WEST, this);
 	}
 private void sendDataToController()
 	{
@@ -167,7 +173,13 @@ private void sendDataToController()
 				changeImageDisplay(name);
 			}
 		});
-	}
+	saveButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent click)
+		{
+			app.savePokedex();
+		}
+	});
+	
 	private void setupDropdown() {
 		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(app.buildPokedexText());
 		pokedexDropdown.setModel(temp);

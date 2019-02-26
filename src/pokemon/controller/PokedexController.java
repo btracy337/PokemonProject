@@ -8,9 +8,11 @@ import pokemon.model.IgglyBuff;
 import pokemon.model.Squirtle;
 import pokemon.view.PokedexFrame;
 import pokemon.model.Pokemon;
+import java.io.*;
 
 public class PokedexController
 {
+	private String saveFile = "backup.pokemon";
 	private ArrayList<Pokemon> pokemonList;
 	private PokedexFrame frame;
 	private Blastoise Blastoise;
