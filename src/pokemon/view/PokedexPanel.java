@@ -142,6 +142,17 @@ private void sendDataToController()
 			app.updatePokemon(index, data);
 		}
 	}
+private void updateFields(int index)
+
+{
+	String [] data = app.getPokemonData(index);
+	healthPointsText.setText(data[0]);
+	attackPointsText.setText(data[1]);
+	enhancementModifierText.setText(data[2]);
+	numberText.setText(data[3]);
+	nameText.setText(data[4]);
+	canEvolveText.setText(data[5])
+}
 	private void changeImageDisplay(String name) {
 		String path = "/pokemon/view/images/";
 		String defaultName = "ultraball";
@@ -179,6 +190,7 @@ private void sendDataToController()
 			app.savePokedex();
 		}
 	});
+	}
 	
 	private void setupDropdown() {
 		DefaultComboBoxModel<String> temp = new DefaultComboBoxModel<String>(app.buildPokedexText());

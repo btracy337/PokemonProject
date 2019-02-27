@@ -1,6 +1,9 @@
 package pokemon.controller;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import pokemon.model.Blastoise;
 import pokemon.model.Charizard;
 import pokemon.model.Charmander;
@@ -103,6 +106,67 @@ public class PokedexController
 		}
 		return true;
 	}
+	public void savePokedex()
+	{
+		try
+		{
+			FileOutputStream saveStream = new FileOutputStream(saveFile);
+			ObjectOutputStream output = new ObjectOutputStream(saveStream);
+			output.writeObject(pokemonList);
+			output.close();
+			saveStream.close();
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(frame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	private void loadPokedex()
+	{
+		try
+		{
+			ArrayList<Pokemon> saved = new ArrayList<Pokemon>();
+			FileInputStream inputStream = new FileInputStream(saveFile);
+			ObjectInputStream input = new ObjectInputStream(inputStream);
+			saved = (ArrayList<Pokemon>) input.readObject();
+			input.close();
+			inputStream.close();
+			pokemonList = saved;
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(frame, "No Save File", "Loading Pokemon", JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch(ClassNotFoundException pokemonError)
+		{
+			JOptionPane.showMessageDialog(frame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	public String [] getPokemonData(int index)
+
+	{
+
+		String [] data = new String[6];
+
+		Pokemon current = pokemonList.get(index);
+
+		data[0] = current.getHealthPoints() + "";
+
+		data[1] = current.getAttackPoints() + "";
+
+		data[2] = current.getEnhancementModifier() + "";
+
+		data[3] = current.getNumber() + "";
+
+		data[4] = current.getName();
+
+		data[5] = current.isCanEvolve() + "";
+
+		return data;
+
+	}
+
+
 
 
 }
